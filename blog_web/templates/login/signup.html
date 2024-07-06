@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Create Account {% endblock %}
+
+
+{% block body %}
+<h2>Create New Account</h2>
+
+
+
+{% if registered %}
+    <div class='alert alert-success'>
+		Account created <a href="{% url 'login:signin' %}">login here</a>
+	</div>
+
+{% else %}
+<form method="post">
+    {{form.as_p}}
+    {% csrf_token %}
+
+    <button class="btn btn-success btn-md">Register</button> <br/>
+    <p>Already have an account <a href="{% url 'login:signin' %}">Login</a></p>
+</form>
+{% endif %}
+
+{% endblock %}
